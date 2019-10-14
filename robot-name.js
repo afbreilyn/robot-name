@@ -15,7 +15,13 @@ export class Robot {
   }
 
   setNewName() {
-    this.name = `AA${this.getRandomInt()}`
+    const alphaCharacters = this.getRandomAlphaCharacters()
+    const digitCharacters = this.getRandomInt()
+    this.name = `${alphaCharacters}${digitCharacters}`
+  }
+
+  getRandomAlphaCharacters() {
+    return "AA"
   }
 }
 
