@@ -6,7 +6,9 @@
 let usedNames = {}
 
 export class Robot {
+
   constructor() {
+    this.internalName = ''
     this.setNewName()
   }
 
@@ -33,7 +35,7 @@ export class Robot {
       shouldBeLooping = usedNames[newName]
     }
 
-    this.name = newName
+    this.internalName = newName
     usedNames[newName] = true
   }
 
@@ -47,6 +49,10 @@ export class Robot {
     }
 
     return result;
+  }
+
+  get name() {
+    return this.internalName
   }
 }
 
