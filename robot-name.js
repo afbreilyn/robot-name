@@ -1,29 +1,55 @@
 // This is only a SKELETON file for the 'Robot Name' exercise. It's been
 // provided as a convenience to get your started writing code faster.
 
-export class Robot {
-	constructor() {
-		this.setNewName()
-	}
+// introduce a checker or set for numbers/alpha chars or the combination of the two
 
-	getRandomInt() {
-  		return `${Math.random()}`.slice(2, 5)
-	}
+let usedNames = {}
+
+export class Robot {
+  constructor() {
+    this.setNewName()
+  }
+
+  getRandomInt() {
+    return `${Math.random()}`.slice(2, 5)
+  }
 
   reset() {
     this.setNewName()
   }
 
-  setNewName() {
+  generateName() {
     const alphaCharacters = this.getRandomAlphaCharacters()
     const digitCharacters = this.getRandomInt()
-    this.name = `${alphaCharacters}${digitCharacters}`
+    return `${alphaCharacters}${digitCharacters}`
+  }
+
+  setNewName() {
+    let shouldBeLooping = true
+
+    let newName
+    while (shouldBeLooping) {
+      newName = this.generateName()
+      shouldBeLooping = usedNames[newName]
+    }
+
+    this.name = newName
+    usedNames[newName] = true
   }
 
   getRandomAlphaCharacters() {
-    return "AA"
+    let result = ''
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    const charactersLength = characters.length
+
+    for (var i = 0; i < 2; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength))
+    }
+
+    return result;
   }
 }
 
-
-Robot.releaseNames = () => { };
+Robot.releaseNames = () => {
+  usedNames = {}
+};
