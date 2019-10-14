@@ -2,8 +2,12 @@
 // provided as a convenience to get your started writing code faster.
 
 export class Robot {
-	get name () {
-		return "AA123"
+	constructor() {
+		this.name = `AA${this.getRandomInt()}`
+	}
+
+	getRandomInt() {
+  		return `${Math.random()}`.slice(2, 5)
 	}
 }
 
