@@ -9,6 +9,10 @@ export class Robot {
 	getRandomInt() {
   		return `${Math.random()}`.slice(2, 5)
 	}
+
+  reset() {
+    this.name = `AA${this.getRandomInt()}`
+  }
 }
 
 
