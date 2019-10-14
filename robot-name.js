@@ -3,7 +3,7 @@
 
 export class Robot {
 	constructor() {
-		this.name = `AA${this.getRandomInt()}`
+		this.setNewName()
 	}
 
 	getRandomInt() {
@@ -11,6 +11,10 @@ export class Robot {
 	}
 
   reset() {
+    this.setNewName()
+  }
+
+  setNewName() {
     this.name = `AA${this.getRandomInt()}`
   }
 }
